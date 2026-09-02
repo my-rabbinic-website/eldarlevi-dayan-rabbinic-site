@@ -322,22 +322,23 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;700;800;900&display=swap"></noscript>
 
-    <script>
+    
+<script>
         if (typeof tailwind !== 'undefined') {
             tailwind.config = {
                 theme: {
                     extend: {
                         colors: {
                             gold: {
-                                light: '#fdf7e3',
+                                light: '#fef1cb',
                                 DEFAULT: '#D4AF37',
-                                dark: '#a68726',
+                                dark: '#997a00',
                                 luxury: '#f1d26f'
                             },
                             dark: {
-                                DEFAULT: '#050505',
-                                light: '#0e0e0e',
-                                accent: '#151515'
+                                DEFAULT: '#030303',
+                                light: '#0a0a0a',
+                                accent: '#121212'
                             }
                         },
                         fontFamily: {
@@ -345,8 +346,8 @@
                             heebo: ['Heebo', 'sans-serif'],
                         },
                         animation: {
-                            'blob': 'blob 10s infinite',
-                            'text-shimmer': 'text-shimmer 3s ease-out infinite alternate',
+                            'blob': 'blob 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1)',
+                            'text-shimmer': 'text-shimmer 3.5s ease-out infinite alternate',
                             'marquee': 'marquee 35s linear infinite',
                             'float-particle': 'float-particle 15s linear infinite',
                             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -354,8 +355,8 @@
                         keyframes: {
                             blob: {
                                 '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                                '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
+                                '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
                                 '100%': { transform: 'translate(0px, 0px) scale(1)' }
                             },
                             'text-shimmer': {
@@ -368,8 +369,8 @@
                             },
                             'float-particle': {
                                 '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '0' },
-                                '10%': { opacity: '0.6' },
-                                '90%': { opacity: '0.6' },
+                                '10%': { opacity: '0.8' },
+                                '90%': { opacity: '0.8' },
                                 '100%': { transform: 'translateY(-1000px) rotate(360deg)', opacity: '0' }
                             }
                         }
@@ -380,265 +381,280 @@
     </script>
 
     <style>
-        body { font-family: 'Assistant', sans-serif; background-color: #050505; color: #f5f5f5; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; }
+        /* Base Styles */
+        body { font-family: 'Assistant', sans-serif; background-color: #030303; color: #f5f5f5; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         h1, h2, h3, h4, h5, .heebo-font { font-family: 'Heebo', sans-serif; letter-spacing: -0.02em; }
         
-        /* Premium Gold Gradients */
-        .gold-gradient { background: linear-gradient(135deg, #b89324 0%, #ffe8a1 30%, #D4AF37 70%, #856511 100%); }
+        /* Premium Gold Gradients - שודרג למראה מתכתי עמוק */
+        .gold-gradient { 
+            background: linear-gradient(135deg, #a68726 0%, #D4AF37 25%, #fff0c2 50%, #D4AF37 75%, #856511 100%); 
+            background-size: 200% 200%; 
+        }
         .gold-gradient-text { 
-            background: linear-gradient(to right, #D4AF37 0%, #fff0c2 50%, #D4AF37 100%);
+            background: linear-gradient(to right, #D4AF37 0%, #fff0c2 40%, #ffffff 50%, #fff0c2 60%, #D4AF37 100%);
             background-size: 200% auto;
             -webkit-background-clip: text; 
+            background-clip: text;
             -webkit-text-fill-color: transparent; 
             animation: text-shimmer 4s linear infinite;
         }
         
-        /* Sophisticated Micro-reflective Glass Panels */
+        /* Sophisticated Micro-reflective Glass Panels - תאורה ושבירת אור משופרת */
         .glass { 
-            background: rgba(14, 14, 14, 0.65); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(212, 175, 55, 0.18); 
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.55);
-            transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(10, 10, 10, 0.65); 
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.15); 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-hover:hover { 
-            background: rgba(22, 22, 22, 0.8); 
-            border-color: rgba(212, 175, 55, 0.6); 
-            transform: translateY(-6px); 
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.25); 
+            background: rgba(18, 18, 18, 0.85); 
+            border-color: rgba(212, 175, 55, 0.5); 
+            transform: translateY(-5px) scale(1.01); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2); 
         }
 
-        .glow-effect-card { position: relative; overflow: hidden; }
+        /* Hover Glow Effects */
+        .glow-effect-card { position: relative; overflow: hidden; border-radius: inherit; }
         .glow-effect-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             border-radius: inherit;
-            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.15), transparent 45%);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.12), transparent 40%);
+            z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.6s ease;
         }
         .glow-effect-card:hover::before { opacity: 1; }
         .glow-effect-card > * { position: relative; z-index: 1; }
 
         /* Premium Golden Border Beam */
-        .border-beam {
-            position: relative;
-        }
+        .border-beam { position: relative; }
         .border-beam::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
-            border-radius: inherit;
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            content: ''; position: absolute; inset: -1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+            border-radius: inherit; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
         }
-        .border-beam:hover::after {
-            opacity: 1;
-        }
+        .border-beam:hover::after { opacity: 1; }
         
-        /* Glow animations */
-        .image-glow { position: relative; }
+        /* Image Glow Animations */
+        .image-glow { position: relative; z-index: 1; }
         .image-glow::before {
-            content: ''; position: absolute; top: -5%; left: -5%; right: -5%; bottom: -5%;
-            background: radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 65%);
-            z-index: -1; border-radius: 50%; animation: pulse-glow 5s infinite alternate ease-in-out;
+            content: ''; position: absolute; inset: -8%;
+            background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%);
+            z-index: -1; border-radius: 50%; animation: pulse-glow 4s infinite alternate ease-in-out;
         }
-        @keyframes pulse-glow { 0% { opacity: 0.5; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
+        @keyframes pulse-glow { 0% { opacity: 0.4; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); } }
 
         /* Premium Geometric Grid Pattern Overlay */
         .bg-mesh {
-            background-color: #050505;
+            background-color: #030303;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05), transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05), transparent 40%);
+                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.04), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.04), transparent 45%);
+            background-attachment: fixed;
         }
 
-        /* Scrollbar styling */
-        ::-webkit-scrollbar { width: 6px; }
+        /* Scrollbar Styling - אלגנטי ונקי יותר */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         @media (min-width: 768px) { ::-webkit-scrollbar { width: 8px; } }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #856511, #D4AF37, #ffe8a1); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #856511, #D4AF37, #ffe8a1, #D4AF37, #856511); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #a68726, #f1d26f, #ffffff, #f1d26f, #a68726); }
 
         /* Timeline Fixes */
         .timeline-line::before {
             content: ''; position: absolute; top: 0; bottom: 0; right: 28px; width: 2px;
-            background: linear-gradient(to bottom, rgba(212,175,55,0), #D4AF37 20%, #D4AF37 80%, rgba(212,175,55,0));
+            background: linear-gradient(to bottom, transparent, #D4AF37 15%, #D4AF37 85%, transparent);
         }
-
         @media (max-width: 768px) {
             .timeline-line::before { right: 20px; }
             .timeline-item-icon { right: -42px !important; }
             h1 { font-size: clamp(2.5rem, 8vw, 3.5rem) !important; word-break: keep-all; }
         }
 
-        input, textarea, select { font-size: 16px !important; }
-        .input-glow:focus { box-shadow: 0 0 15px rgba(212, 175, 55, 0.25); border-color: rgba(212,175,55,0.7); }
+        /* Form Inputs */
+        input, textarea, select { font-size: 16px !important; outline: none; }
+        .input-glow { transition: all 0.3s ease; }
+        .input-glow:focus { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); border-color: #D4AF37; background-color: rgba(21, 21, 21, 0.9); }
 
-        /* Preloader */
-        #preloader { transition: opacity 0.8s ease-out; }
+        /* General UX & Preloader */
+        html { scroll-behavior: smooth; }
+        #preloader { transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .loaded #preloader { opacity: 0; pointer-events: none; display: none; }
         
-        details > summary { list-style: none; outline: none; }
+        details > summary { list-style: none; outline: none; cursor: pointer; }
         details > summary::-webkit-details-marker { display: none; }
-        details > summary:focus-visible { box-shadow: 0 0 0 2px #D4AF37; border-radius: 0.5rem; }
-        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
-        @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+        details > summary:focus-visible { box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.8); border-radius: 0.5rem; }
+        details[open] summary ~ * { animation: sweep 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-15px)} 100% {opacity: 1; transform: translateY(0)} }
 
-        html { scroll-behavior: smooth; }
-
-        /* Particles - only desktop */
+        /* Particles - Desktop only */
         @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-            .particles-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
-            .particle { position: absolute; bottom: -10px; width: 3px; height: 3px; background-color: rgba(212, 175, 55, 0.45); border-radius: 50%; box-shadow: 0 0 12px rgba(212, 175, 55, 0.8); animation: float-particle 15s infinite linear; }
+            .particles-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+            .particle { position: absolute; bottom: -10px; width: 3px; height: 3px; background-color: rgba(212, 175, 55, 0.5); border-radius: 50%; box-shadow: 0 0 15px rgba(212, 175, 55, 0.9); animation: float-particle 15s infinite linear; }
         }
         
+        /* Luxury Texture Overlay */
         .luxury-texture {
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0; mix-blend-mode: overlay;
         }
 
-        /* Shiny / Shimmer overlay for gold buttons */
-        .shimmer-btn {
-            position: relative;
-            overflow: hidden;
-        }
+        /* Shimmer Overlay for Buttons - שופר למראה נוצץ יותר */
+        .shimmer-btn { position: relative; overflow: hidden; z-index: 1; }
         .shimmer-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: skewX(-25deg);
-            transition: 0.75s;
+            content: ''; position: absolute; top: 0; left: -100%; width: 40%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transform: skewX(-25deg); transition: all 0.75s ease; z-index: -1;
         }
-        .shimmer-btn:hover::before {
-            left: 125%;
-            transition: 0.75s;
-        }
+        .shimmer-btn:hover::before { left: 125%; transition: all 0.75s ease; }
 
-        /* Elegant Double Gold Frame */
+        /* Elegant Double Gold Frame - מסגרת כפולה אמיתית */
         .double-gold-frame {
-            border: 2px solid #D4AF37;
-            padding: 4px;
-            background-color: transparent;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            position: relative;
+            border: 1px solid #D4AF37;
+            padding: 8px;
+            background-color: rgba(5, 5, 5, 0.8);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .double-gold-frame::before {
+            content: ''; position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px dashed rgba(212, 175, 55, 0.5);
+            pointer-events: none;
+        }
+        
+        /* Scroll Progress Head Glow - נקודת אור בקצה פס הגלילה */
+        #scroll-progress-bar { position: relative; }
+        #scroll-progress-bar::after {
+            content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            width: 10px; height: 10px; background: #ffffff; border-radius: 50%;
+            box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.8); opacity: 0.9;
         }
     </style>
 </head>
+
 <body class="bg-mesh relative overflow-x-hidden pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 bg-dark/50 z-[100]" aria-hidden="true">
-        <div id="scroll-progress-bar" class="h-full gold-gradient w-0 rounded-r-full transition-all duration-150 ease-out shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
+    <!-- Scroll Progress Bar - שודרג עם הילה ונקודת תאורה -->
+    <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1.5 bg-dark/80 backdrop-blur-sm z-[100]" aria-hidden="true">
+        <div id="scroll-progress-bar" class="h-full gold-gradient w-0 rounded-r-full transition-all duration-150 ease-out shadow-[0_0_15px_rgba(212,175,55,1)]"></div>
     </div>
 
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] bg-dark flex flex-col items-center justify-center">
-        <div class="relative w-20 h-20 gold-gradient rounded-2xl flex items-center justify-center transform rotate-45 shadow-[0_0_40px_rgba(212,175,55,0.4)] animate-pulse mb-8">
-            <span class="text-dark text-4xl font-black transform -rotate-45 font-heebo">E</span>
+<!-- Preloader - משודרג -------------->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-dark flex flex-col items-center justify-center transition-opacity duration-700">
+        <!-- הלוגו - תואם לעיצוב החדש בהדר -->
+        <div class="relative w-20 h-20 md:w-24 md:h-24 gold-gradient rounded-2xl flex items-center justify-center transform rotate-45 shadow-[0_0_40px_rgba(212,175,55,0.4)] animate-pulse mb-10 border-2 border-white/20">
+            <div class="absolute inset-1.5 border border-white/30 rounded-xl"></div>
+            <span class="text-dark text-3xl md:text-4xl font-black transform -rotate-45 heebo-font" aria-hidden="true">E.L</span>
         </div>
-        <div class="text-gold text-sm tracking-widest uppercase font-bold animate-bounce text-center px-4">צדק צדק תרדוף...</div>
+        
+        <!-- טקסט טעינה ומיתוג -->
+        <div class="flex flex-col items-center gap-3">
+            <div class="text-gold text-lg md:text-xl tracking-[0.15em] font-black heebo-font text-center px-4">
+                הרב אלדר לוי
+            </div>
+            <div class="text-white/80 text-sm md:text-base tracking-widest font-bold animate-pulse text-center px-4">
+                צדק צדק תרדוף...
+            </div>
+        </div>
     </div>
-
-    <!-- Animated Background Blobs -->
-    <div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0" aria-hidden="true">
-        <div class="absolute top-0 -left-1/4 w-72 md:w-96 h-72 md:h-96 bg-gold/10 rounded-full mix-blend-screen filter blur-[90px] md:blur-[120px] animate-blob"></div>
-        <div class="absolute top-1/2 -right-1/4 w-72 md:w-96 h-72 md:h-96 bg-gold/5 rounded-full mix-blend-screen filter blur-[90px] md:blur-[120px] animate-blob" style="animation-delay: 2s;"></div>
-    </div>
-    <div class="luxury-texture fixed inset-0 w-full h-full"></div>
     
-    <!-- Header / Navbar -->
-    <header id="header" class="fixed w-full z-50 transition-all duration-300 py-3 md:py-4 px-4 md:px-8 border-b border-transparent">
+    <!-- Animated Background Blobs - משודרג -------->
+    <div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0" aria-hidden="true">
+        <!-- בלוב שמאלי עליון -->
+        <div class="absolute top-0 -left-1/4 w-72 md:w-[30rem] h-72 md:h-[30rem] bg-gold/15 rounded-full mix-blend-screen filter blur-[100px] md:blur-[140px] animate-blob"></div>
+        
+        <!-- בלוב ימני אמצעי -->
+        <div class="absolute top-1/2 -right-1/4 w-72 md:w-[30rem] h-72 md:h-[30rem] bg-gold/10 rounded-full mix-blend-screen filter blur-[100px] md:blur-[140px] animate-blob" style="animation-delay: 2s;"></div>
+        
+        <!-- בלוב תחתון מרכזי (חדש - לאיזון) -->
+        <div class="absolute -bottom-32 left-1/2 -translate-x-1/2 w-72 md:w-[25rem] h-72 md:h-[25rem] bg-gold/10 rounded-full mix-blend-screen filter blur-[100px] md:blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+    
+    <!-- Luxury Texture -->
+    <div class="luxury-texture fixed inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-overlay z-0"></div>
+       
+    <!-- headere -->
+   <header id="header" class="fixed w-full z-50 transition-all duration-300 py-3 md:py-4 px-4 md:px-8 bg-dark/90 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20">
         <div class="container mx-auto flex justify-between items-center relative z-20">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg pr-1" aria-label="לדף הבית">
-                <div class="relative w-10 h-10 md:w-12 md:h-12 gold-gradient rounded-xl flex items-center justify-center transform rotate-45 group-hover:rotate-0 transition-all duration-500 shadow-lg shadow-gold/20">
-                    <span class="text-dark text-lg md:text-xl font-black transform -rotate-45 group-hover:rotate-0 transition-all duration-500 heebo-font" aria-hidden="true">E.L</span>
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/" class="flex items-center gap-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg pr-1" aria-label="לדף הבית">
+                <div class="relative w-12 h-12 md:w-14 md:h-14 gold-gradient rounded-xl flex items-center justify-center transform rotate-45 group-hover:rotate-90 transition-all duration-700 shadow-[0_0_15px_rgba(212,175,55,0.3)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] border-2 border-white/20 hover:border-white/40">
+                    <div class="absolute inset-1 border border-white/30 rounded-lg"></div>
+                    <span class="text-dark text-xl md:text-2xl font-black transform -rotate-45 group-hover:-rotate-90 transition-all duration-700 heebo-font" aria-hidden="true">E.L</span>
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-lg md:text-2xl font-black gold-gradient-text tracking-tight leading-none heebo-font">הרב אלדר לוי</span>
-                    <span class="text-[8px] md:text-[10px] text-white/70 tracking-[0.15em] font-bold mt-0.5">דיין מוסמך וטוען רבני</span>
+                <div class="flex flex-col transform group-hover:-translate-x-1 transition-transform duration-300">
+                    <span class="text-xl md:text-2xl font-black gold-gradient-text tracking-tight leading-none heebo-font">הרב אלדר לוי</span>
+                    <span class="text-[9px] md:text-[11px] text-white/80 tracking-[0.2em] font-bold mt-1 uppercase">דיין מוסמך וטוען רבני</span>
                 </div>
             </a>
 
-            <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-8" aria-label="תפריט ניווט ראשי">
-                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
-                    ספרות תורנית
-                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="https://my-rabbinic-website.github.io/my-rabbinic-law-site/" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
-                    בוררות הלכתית
-                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בסיעתאדשמיא" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="תפריט ניווט ראשי">
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בסיעתאדשמיא" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
                     דיני משפחה
                     <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
-                    ייצוג ויעוץ
+                <a href="https://my-rabbinic-website.github.io/my-rabbinic-law-site/" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    בוררות עסקית
                     <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/שיעורים" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
-                      שיעורים והרצאות
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/הסכמים-צוואות" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    הסכמים וצוואות
                     <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#reviews" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/סייוע-מייצגים" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    למייצגים
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית.html" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    פסקי דין ומאמרים
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#faq" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    שאלות נפוצות
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
                     המלצות
-                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מהעיתונות" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded">
-                    מהעיתונות
                     <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
             </nav>
 
-            <!-- CTA & Mobile Toggle -->
-            <div class="flex items-center gap-3 md:gap-4">
-                <a href="tel:0528219928" class="hidden sm:flex items-center gap-2 text-gold hover:text-white transition-colors text-sm font-bold dir-ltr bg-white/5 px-4 py-2 rounded-full border border-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
-                    052-8219928 <i class="fas fa-phone-alt text-xs" aria-hidden="true"></i>
+            <div class="flex items-center gap-3 md:gap-5">
+                <a href="tel:0534192798" class="hidden sm:flex items-center gap-2 text-gold hover:text-white transition-all duration-300 text-sm font-bold dir-ltr bg-white/5 hover:bg-gold/10 px-5 py-2.5 rounded-full border border-gold/20 hover:border-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+                    שיחה ישירה <i class="fas fa-phone-alt text-xs" aria-hidden="true"></i>
                 </a>
-                <a href="#contact" class="shimmer-btn hidden md:flex gold-gradient px-6 py-2.5 rounded-full text-dark font-black text-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white group-hover-effect">
+                <a href="#contact" class="shimmer-btn hidden md:flex gold-gradient px-7 py-2.5 rounded-full text-dark font-black text-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white group-hover-effect">
                     סיוע הלכתי-משפטי
                 </a>
                 
-                <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 glass rounded-full flex items-center justify-center text-gold border-gold/40 hover:bg-gold/10 transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label="פתח תפריט ניווט">
-                    <i class="fas fa-bars text-lg" aria-hidden="true"></i>
+                <button id="mobileMenuBtn" class="lg:hidden w-12 h-12 glass rounded-full flex items-center justify-center text-gold border border-gold/40 hover:bg-gold/10 hover:scale-105 transition-all duration-300 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label="פתח תפריט ניווט">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div id="mobileMenu" class="fixed inset-0 bg-dark/98 backdrop-blur-3xl z-[40] translate-x-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center gap-6 md:gap-8 lg:hidden" aria-hidden="true">
-        <nav class="flex flex-col items-center gap-6 text-center w-full px-6">
-            <a href="https://my-rabbinic-website.github.io/my-rabbinic-law-site/" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">בוררות עיסקית</a>
-            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בסיעתאדשמיא" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">דיני משפחה</a>
-            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית.html" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">פס'ד ומאמרים</a>
-            <a href="#reviews" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">המלצות</a>
-            <a href="#faq" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">שאלות נפוצות</a>
-            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/שיעורים" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">שיעורים-בהרצה</a>
-            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מהעיתונות" class="mobile-link text-2xl font-black text-white hover:text-gold transition-colors block w-full py-2">מהעיתונות-בהרצה</a>        
+        <nav class="flex flex-col items-center gap-5 text-center w-full px-6 overflow-y-auto max-h-[70vh]">
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בסיעתאדשמיא" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">דיני משפחה</a>
+            <a href="https://my-rabbinic-website.github.io/my-rabbinic-law-site/" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">בוררות עסקית</a>
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/הסכמים-צוואות" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">הסכמים וצוואות</a>
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/סייוע-מייצגים" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">למייצגים</a>        
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית.html" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">פסקי דין ומאמרים</a>
+            <a href="#faq" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">שאלות נפוצות</a>
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">המלצות</a>
         </nav>
-        <div class="w-20 h-px bg-gold/40 my-2" aria-hidden="true"></div>
-        <a href="#contact" class="mobile-link gold-gradient px-8 py-4 rounded-full text-dark font-black text-lg shadow-xl shadow-gold/20 w-[80%] max-w-xs text-center">
+        <div class="w-24 h-px bg-gold/40 my-2" aria-hidden="true"></div>
+        <a href="#contact" class="mobile-link gold-gradient px-10 py-4 rounded-full text-dark font-black text-lg shadow-[0_0_20px_rgba(212,175,55,0.3)] w-[85%] max-w-xs text-center hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:scale-105 transition-all duration-300">
             קבע פגישת ייעוץ
         </a>
     </div>
 
     <main class="relative z-10">
-
+       
         <!-- Hero Section -->
         <section class="relative min-h-[100svh] md:min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
             <!-- Particles Background -->
@@ -1515,7 +1531,7 @@
         <div id="contact-form-anchor"></div>
     </main>
 
-    <!-- Footer & Contact Form -->
+   <!-- Footer & Contact Form -->
     <footer id="contact" class="bg-[#050505] pt-16 md:pt-20 pb-8 md:pb-10 border-t border-gold/30 overflow-hidden relative">
         <div class="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-gold/5 blur-[120px] md:blur-[180px] rounded-full pointer-events-none" aria-hidden="true"></div>
 
@@ -1579,7 +1595,7 @@
                     <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-white/80">
                         <li><a href="#header" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">ראשי</a></li>
                         <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בוררות" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">בוררות</a></li>
-                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">סיוע למייצגים</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/סייוע-מייצגים" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">סיוע למייצגים</a></li>
                         <li><a href="#reviews" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">המלצות מלקוחות</a></li>
                         <li><a href="https://my-rabbinic-website.github.io/safrut-tifarteha/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">ספרות סת"ם</a></li>
                         <li><a href="https://youtu.be/sTTKgpCdMkc" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">פיענוח קורות חיים</a></li>
@@ -1591,7 +1607,7 @@
                     <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-white/80">
                         <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ביתדין-בארשבע" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">דיני משפחה וגירושין</a></li>
                         <li><a href="#services" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">תביעות כתובה</a></li>
-                        <li><a href="#services" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">דיני ממונות ובוררות</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מדריך-הליכי-בית-הדין" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">המדריך בהליכים בבתי הדין</a></li>
                         <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/הסכמים-צוואות" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">הסכמים וצוואות</a></li>
                         <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/שיעורים" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">גלריית אירועים</a></li>
                     </ul>
@@ -1634,196 +1650,240 @@
         </a>
     </div>
 
-    <!-- Scripts -->
+<!-- Scriptsמכאן ולמטה שודרג בגימיני חשבון רעות -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        (function() {
+            "use strict";
 
-        // Particle configuration for elegant desktop backgrounds
-        if (window.innerWidth > 768 && window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const particlesContainer = document.getElementById('particles');
-            if(particlesContainer) {
+            // 1. עדכון שנת זכויות יוצרים
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // 2. מערכת חלקיקים (Particles) לרקע יוקרתי (לדסקטופ בלבד)
+            const initParticles = () => {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (window.innerWidth <= 768 || prefersReducedMotion) return;
+
+                const container = document.getElementById('particles');
+                if (!container) return;
+
+                const fragment = document.createDocumentFragment();
                 for (let i = 0; i < 30; i++) {
                     const particle = document.createElement('div');
-                    particle.classList.add('particle');
+                    particle.className = 'particle';
                     particle.style.left = `${Math.random() * 100}%`;
                     particle.style.animationDuration = `${Math.random() * 12 + 10}s`;
                     particle.style.animationDelay = `${Math.random() * 10}s`;
-                    particlesContainer.appendChild(particle);
+                    fragment.appendChild(particle);
                 }
-            }
-        }
+                container.appendChild(fragment);
+            };
 
-        // Window scroll tracking for layout headers and indicators
-        const scrollProgressBar = document.getElementById('scroll-progress-bar');
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
-            if(scrollProgressBar) scrollProgressBar.style.width = scrollPercentage + '%';
-        }, { passive: true });
+            // 3. אפקט כתיבה אוטומטית (Typewriter)
+            const initTypewriter = () => {
+                const textElement = document.getElementById("typed-text");
+                if (!textElement) return;
 
-        // Typed text animation loop
-        const words = ["גירושין ומשמורת", "תביעות כתובה", "דיני ממונות ובוררות", "צוואות וירושות", "ייצוג אסטרטגי"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typedTextElement = document.getElementById("typed-text");
+                const words = ["גירושין ומשמורת", "תביעות כתובה", "דיני ממונות ובוררות", "צוואות וירושות", "ייצוג אסטרטגי"];
+                let wordIndex = 0, charIndex = 0, isDeleting = false;
 
-        function typeEffect() {
-            if(!typedTextElement) return;
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                typedTextElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typedTextElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
+                const typeEffect = () => {
+                    const currentWord = words[wordIndex];
+                    
+                    if (isDeleting) {
+                        charIndex--;
+                    } else {
+                        charIndex++;
+                    }
 
-            let typeSpeed = isDeleting ? 40 : 80;
+                    textElement.textContent = currentWord.substring(0, charIndex);
 
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 400; 
-            }
-            setTimeout(typeEffect, typeSpeed);
-        }
-        
-        // Luxury card hover mouse tracking
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.querySelectorAll('.glow-effect-card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        }
+                    let typeSpeed = isDeleting ? 40 : 80;
 
-        // Live stats counters implementation
-        function initCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200;
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        typeSpeed = 2000; // השהייה בסיום המילה
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeSpeed = 400; // השהייה לפני תחילת מילה חדשה
+                    }
 
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
+                    setTimeout(typeEffect, typeSpeed);
+                };
+                
+                typeEffect();
+            };
+
+            // 4. אנימציית מספרים חכמה (Counters with Easing)
+            const initCounters = () => {
+                const counters = document.querySelectorAll('.counter');
+                if (counters.length === 0) return;
+
+                // פונקציית האטה מרשימה לספירה (Ease-Out)
+                const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+                const duration = 2000; // משך האנימציה באלפיות שניה
+
+                const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
-                        if(entry.isIntersecting) {
-                            const target = +entry.target.getAttribute('data-target');
-                            let count = 0;
-                            const inc = target / speed;
+                        if (entry.isIntersecting) {
+                            const target = parseInt(entry.target.getAttribute('data-target'), 10);
+                            if (isNaN(target)) return;
 
-                            const updateCount = () => {
-                                if (count < target) {
-                                    count += inc;
-                                    entry.target.innerText = Math.ceil(count);
-                                    requestAnimationFrame(updateCount);
+                            let startTime = null;
+                            const updateCounter = (currentTime) => {
+                                if (!startTime) startTime = currentTime;
+                                const progress = Math.min((currentTime - startTime) / duration, 1);
+                                
+                                const currentCount = Math.ceil(target * easeOutExpo(progress));
+                                entry.target.innerText = currentCount;
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(updateCounter);
                                 } else {
                                     entry.target.innerText = target;
                                 }
                             };
-                            updateCount();
-                            observer.unobserve(entry.target);
+                            
+                            requestAnimationFrame(updateCounter);
+                            obs.unobserve(entry.target);
                         }
                     });
                 }, { threshold: 0.5 });
 
                 counters.forEach(counter => observer.observe(counter));
-            } else {
-                counters.forEach(counter => {
-                    counter.innerText = counter.getAttribute('data-target');
+            };
+
+            // 5. אפקט הארה במעבר עכבר (Glow Hover Effect)
+            const initGlowEffect = () => {
+                const cards = document.querySelectorAll('.glow-effect-card');
+                const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                
+                if (!canHover || prefersReducedMotion || cards.length === 0) return;
+
+                cards.forEach(card => {
+                    let ticking = false;
+                    card.addEventListener('mousemove', e => {
+                        if (!ticking) {
+                            requestAnimationFrame(() => {
+                                const rect = card.getBoundingClientRect();
+                                const x = e.clientX - rect.left;
+                                const y = e.clientY - rect.top;
+                                card.style.setProperty('--mouse-x', `${x}px`);
+                                card.style.setProperty('--mouse-y', `${y}px`);
+                                ticking = false;
+                            });
+                            ticking = true;
+                        }
+                    });
                 });
-            }
-        }
+            };
 
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-            
-            if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                const isMobile = window.innerWidth < 768;
-                AOS.init({ 
-                    duration: isMobile ? 800 : 1000, 
-                    once: true, 
-                    offset: isMobile ? 20 : 50, 
-                    easing: 'ease-out-cubic' 
+            // 6. ניהול אירועי גלילה (Scroll) - מד התקדמות ותפריט עליון
+            const initScrollFeatures = () => {
+                const progressBar = document.getElementById('scroll-progress-bar');
+                const header = document.getElementById('header');
+                const scrollTopBtn = document.getElementById('scrollTopBtn');
+                
+                let ticking = false;
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                            
+                            // עדכון מד התקדמות
+                            if (progressBar) {
+                                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                                const scrollPercentage = (scrollTop / scrollHeight) * 100;
+                                progressBar.style.width = `${scrollPercentage}%`;
+                            }
+
+                            // עדכון עיצוב התפריט העליון וכפתור חזרה למעלה
+                            if (scrollTop > 50) {
+                                header?.classList.add('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
+                                header?.classList.remove('py-3', 'md:py-4', 'border-transparent');
+                                
+                                scrollTopBtn?.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                scrollTopBtn?.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            } else {
+                                header?.classList.remove('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
+                                header?.classList.add('py-3', 'md:py-4', 'border-transparent');
+                                
+                                scrollTopBtn?.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                scrollTopBtn?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            }
+                            
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+
+                // כפתור חזרה למעלה
+                scrollTopBtn?.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
-            }
-            
-            initCounters();
-            typeEffect(); 
-        });
+            };
 
-        // Top navigation backdrop control
-        const header = document.getElementById('header');
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        let lastScrollTop = 0;
-        
-        window.addEventListener('scroll', () => {
-            const st = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (st > 50) {
-                if(header) {
-                    header.classList.add('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
-                    header.classList.remove('py-3', 'md:py-4', 'border-transparent');
-                }
-                if(scrollTopBtn) {
-                    scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-                    scrollTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                }
-            } else {
-                if(header) {
-                    header.classList.remove('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
-                    header.classList.add('py-3', 'md:py-4', 'border-transparent');
-                }
-                if(scrollTopBtn) {
-                    scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-                    scrollTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                }
-            }
-            lastScrollTop = st <= 0 ? 0 : st;
-        }, { passive: true });
+            // 7. תפריט מובייל
+            const initMobileMenu = () => {
+                const btn = document.getElementById('mobileMenuBtn');
+                const menu = document.getElementById('mobileMenu');
+                const links = document.querySelectorAll('.mobile-link');
+                let isOpen = false;
 
-        if(scrollTopBtn) {
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const toggleMenu = () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        menu?.classList.remove('translate-x-full');
+                        if(btn) {
+                            btn.innerHTML = '<i class="fas fa-times text-xl" aria-hidden="true"></i>';
+                            btn.setAttribute('aria-expanded', 'true');
+                        }
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menu?.classList.add('translate-x-full');
+                        if(btn) {
+                            btn.innerHTML = '<i class="fas fa-bars text-lg" aria-hidden="true"></i>';
+                            btn.setAttribute('aria-expanded', 'false');
+                        }
+                        document.body.style.overflow = '';
+                    }
+                };
+
+                btn?.addEventListener('click', toggleMenu);
+                links.forEach(link => link.addEventListener('click', toggleMenu));
+            };
+
+            // 8. הפעלה בעת טעינת החלון
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+                
+                // אתחול AOS Animations
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!prefersReducedMotion) {
+                    const isMobile = window.innerWidth < 768;
+                    AOS.init({ 
+                        duration: isMobile ? 800 : 1000, 
+                        once: true, 
+                        offset: isMobile ? 20 : 50, 
+                        easing: 'ease-out-cubic' 
+                    });
+                }
+
+                // הפעלת שאר הפונקציות
+                initParticles();
+                initTypewriter();
+                initCounters();
+                initGlowEffect();
+                initScrollFeatures();
+                initMobileMenu();
             });
-        }
 
-        // Mobile responsive menu toggle controller
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let menuOpen = false;
-
-        function toggleMenu() {
-            menuOpen = !menuOpen;
-            if(menuOpen) {
-                mobileMenu.classList.remove('translate-x-full');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times text-xl" aria-hidden="true"></i>';
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            } else {
-                mobileMenu.classList.add('translate-x-full');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-lg" aria-hidden="true"></i>';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        }
-
-        if(mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', toggleMenu);
-        }
-        
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
+        })();
     </script>
 </body>
 </html>
